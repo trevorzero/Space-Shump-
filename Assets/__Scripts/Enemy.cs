@@ -87,15 +87,20 @@ public class Enemy : MonoBehaviour {
 			case "ProjectileHero":
 			Projectile p = otherGO.GetComponent<Projectile>();
 			ShowDamage();
+			Debug.Log(p.type);
 
 			if(!bndCheck.isOnScreen)
 			{
 				Destroy(otherGO);
 				break;
 			}
+			//Debug.Log("health is"  + health);
+			//Debug.Log("Damage is"  +  Main.GetWeaponDefinition(p.type).damageOnHit);
 			health -= Main.GetWeaponDefinition(p.type).damageOnHit;
+		//	Debug.Log("health is"  + health);
 			if(health <= 0)
 			{
+				
 				if (!notifiedOfDestuction) {
 					Main.S.ShipDestroyed(this);
 				}

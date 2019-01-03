@@ -44,8 +44,9 @@ public class Main : MonoBehaviour {
 
 	public void SpawnEnemy()
 	{
-		Debug.Log("Spawning Enemy");
+	//s	Debug.Log("Spawning Enemy");
 		int ndx = Random.Range(0, prefabEnemies.Length);
+	//	Debug.Log("NDX is "+ ndx);
 		GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]);
 		float enemyPadding = enemyDefualtPadding;
 		if (go.GetComponent<BoundsCheck>() != null)
@@ -68,11 +69,15 @@ public class Main : MonoBehaviour {
 		SceneManager.LoadScene("_Scene_0");
 	}
 	static public WeaponDefinition GetWeaponDefinition(WeaponType wt) {
+		Debug.Log("Looking for weapontype" + wt);
+
 		if(WEAP_DICT.ContainsKey(wt))
 		{
 			return( WEAP_DICT[wt]);
 		}
+		Debug.Log("Didn't find weapontype" + wt);
 		return (new WeaponDefinition() );
+
 	}
 }
 
